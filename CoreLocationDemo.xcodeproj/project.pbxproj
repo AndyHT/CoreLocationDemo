@@ -12,6 +12,7 @@
 		A47FD55D1C06F97900F3EFEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A47FD55B1C06F97900F3EFEF /* Main.storyboard */; };
 		A47FD55F1C06F97900F3EFEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47FD55E1C06F97900F3EFEF /* Assets.xcassets */; };
 		A47FD5621C06F97900F3EFEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A47FD5601C06F97900F3EFEF /* LaunchScreen.storyboard */; };
+		A47FD56A1C06FA8300F3EFEF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47FD5691C06FA8300F3EFEF /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		A47FD55E1C06F97900F3EFEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A47FD5611C06F97900F3EFEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A47FD5631C06F97900F3EFEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A47FD5691C06FA8300F3EFEF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				A47FD5571C06F97900F3EFEF /* AppDelegate.swift */,
 				A47FD5591C06F97900F3EFEF /* ViewController.swift */,
+				A47FD5691C06FA8300F3EFEF /* MapViewController.swift */,
 				A47FD55B1C06F97900F3EFEF /* Main.storyboard */,
 				A47FD55E1C06F97900F3EFEF /* Assets.xcassets */,
 				A47FD5601C06F97900F3EFEF /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A47FD55A1C06F97900F3EFEF /* ViewController.swift in Sources */,
+				A47FD56A1C06FA8300F3EFEF /* MapViewController.swift in Sources */,
 				A47FD5581C06F97900F3EFEF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +289,7 @@
 				A47FD5681C06F97900F3EFEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
