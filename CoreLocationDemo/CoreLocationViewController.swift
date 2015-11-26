@@ -12,15 +12,14 @@ import CoreLocation
 class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager:CLLocationManager? = nil
-    
     var pointLocation:CLLocation? = nil
     
-
+    @IBOutlet weak var longitudeLabel: UILabel!
+    @IBOutlet weak var latitudeLabel: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        checkLocationAuthority()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,17 +27,9 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func startLocate(sender: AnyObject) {
+        checkLocationAuthority()
     }
-    */
-    
     func startStandardUpdates() {
         if (locationManager == nil) {
             locationManager = CLLocationManager()
@@ -47,7 +38,7 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
         locationManager!.delegate = self
         locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         
-        locationManager!.distanceFilter = 500   //500米
+//        locationManager!.distanceFilter = 500   //500米
         
         locationManager!.startUpdatingLocation()
     }
@@ -88,6 +79,7 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
         case .NotDetermined:
             print("notDetermined")
             //向用户申请授权
+            print("申请授权")
             locationManager = CLLocationManager()
             self.locationManager!.requestWhenInUseAuthorization()
             
@@ -118,24 +110,22 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
         
     }
 
-
-    
-    /*
-    *
-    */
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let currentLocation = locations.last {
             self.pointLocation = currentLocation
+            
+            self.longitudeLabel.text = "\(currentLocation.coordinate.longitude)"
+            self.latitudeLabel.text = "\(currentLocation.coordinate.latitude)"
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "mapView" {
-            let nextController = segue.destinationViewController as! MapViewController
-            nextController.pointLocation = self.pointLocation
-            print("latitude:\(self.pointLocation!.coordinate.latitude)")
-            print("longitude:\(self.pointLocation!.coordinate.longitude)")
             
+            if let location = self.pointLocation {
+                let nextController = segue.destinationViewController as! MapViewController
+                nextController.pointLocation = location
+            }
         }
     }
     

@@ -23,8 +23,11 @@
                                 <rect key="frame" x="28" y="28" width="30" height="30"/>
                                 <animations/>
                                 <state key="normal" title="返回"/>
+                                <connections>
+                                    <action selector="backAction:" destination="TZ3-q5-iuC" eventType="touchUpInside" id="Zu8-qV-g4Z"/>
+                                </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="u5m-1o-mWu">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="u5m-1o-mWu">
                                 <rect key="frame" x="0.0" y="75" width="600" height="476"/>
                                 <animations/>
                             </mapView>
@@ -35,7 +38,7 @@
                             <constraint firstItem="u5m-1o-mWu" firstAttribute="leading" secondItem="cQU-zX-64P" secondAttribute="leading" id="0GJ-ZJ-BGG"/>
                             <constraint firstAttribute="trailing" secondItem="u5m-1o-mWu" secondAttribute="trailing" id="WtO-cK-5iR"/>
                             <constraint firstItem="u5m-1o-mWu" firstAttribute="bottom" secondItem="QDC-iU-4ep" secondAttribute="top" id="nBf-FF-NdJ"/>
-                            <constraint firstItem="u5m-1o-mWu" firstAttribute="top" secondItem="cQU-zX-64P" secondAttribute="top" id="rv5-zN-ijw"/>
+                            <constraint firstItem="u5m-1o-mWu" firstAttribute="top" secondItem="cQU-zX-64P" secondAttribute="top" constant="75" id="rv5-zN-ijw"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="地图" image="map" selectedImage="map_selected" id="uCl-wO-uY3"/>
@@ -45,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRB-kO-L74" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="295" y="674"/>
+            <point key="canvasLocation" x="295" y="689"/>
         </scene>
         <!--得到当前位置-->
         <scene sceneID="nsr-Nx-Xgc">
@@ -59,11 +62,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvl-uo-M1J">
-                                <rect key="frame" x="270" y="265" width="60" height="30"/>
-                                <animations/>
-                                <state key="normal" title="开始定位"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRF-VB-JKE">
                                 <rect key="frame" x="96" y="99" width="484" height="21"/>
                                 <animations/>
@@ -101,34 +99,45 @@
                                 <animations/>
                                 <state key="normal" title="在地图上显示我的位置"/>
                                 <connections>
-                                    <segue destination="TZ3-q5-iuC" kind="show" id="DEb-FW-OUI"/>
+                                    <segue destination="TZ3-q5-iuC" kind="show" identifier="mapView" id="DEb-FW-OUI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvl-uo-M1J">
+                                <rect key="frame" x="270" y="245" width="60" height="30"/>
+                                <animations/>
+                                <state key="normal" title="开始定位"/>
+                                <connections>
+                                    <action selector="startLocate:" destination="HUY-bM-VBf" eventType="touchUpInside" id="u0H-Wl-26g"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PFQ-cJ-nV5" firstAttribute="baseline" secondItem="uEV-Zx-ntB" secondAttribute="baseline" id="0SO-n1-l9W"/>
-                            <constraint firstItem="Dvl-uo-M1J" firstAttribute="centerX" secondItem="HW0-YD-Czv" secondAttribute="centerX" id="0vB-lL-Wc8"/>
-                            <constraint firstItem="z21-vy-5Az" firstAttribute="top" secondItem="Dvl-uo-M1J" secondAttribute="bottom" constant="44" id="38l-NL-wUx"/>
-                            <constraint firstItem="WRF-VB-JKE" firstAttribute="leading" secondItem="6zy-xz-Z1B" secondAttribute="trailing" constant="8" symbolic="YES" id="76R-LB-ZGB"/>
-                            <constraint firstItem="6zy-xz-Z1B" firstAttribute="top" secondItem="FMR-TN-iwO" secondAttribute="bottom" constant="79" id="8WY-ra-YSw"/>
-                            <constraint firstItem="PFQ-cJ-nV5" firstAttribute="leading" secondItem="6zy-xz-Z1B" secondAttribute="leading" id="Ewo-TG-0nY"/>
-                            <constraint firstItem="6zy-xz-Z1B" firstAttribute="firstBaseline" secondItem="WRF-VB-JKE" secondAttribute="firstBaseline" id="FxB-kg-PYJ"/>
-                            <constraint firstItem="z21-vy-5Az" firstAttribute="centerX" secondItem="Dvl-uo-M1J" secondAttribute="centerX" id="QCc-R5-BEW"/>
-                            <constraint firstItem="WRF-VB-JKE" firstAttribute="baseline" secondItem="6zy-xz-Z1B" secondAttribute="baseline" id="R6k-4P-lCe"/>
-                            <constraint firstItem="PFQ-cJ-nV5" firstAttribute="firstBaseline" secondItem="uEV-Zx-ntB" secondAttribute="firstBaseline" id="SZe-Lw-AvQ"/>
-                            <constraint firstItem="imO-fA-WeA" firstAttribute="top" secondItem="PFQ-cJ-nV5" secondAttribute="bottom" constant="385" id="fzG-bw-NIJ"/>
-                            <constraint firstItem="Dvl-uo-M1J" firstAttribute="centerY" secondItem="HW0-YD-Czv" secondAttribute="centerY" constant="-20" id="gbV-Xf-9Sn"/>
-                            <constraint firstItem="PFQ-cJ-nV5" firstAttribute="top" secondItem="6zy-xz-Z1B" secondAttribute="bottom" constant="25" id="hOg-cg-UYo"/>
-                            <constraint firstItem="uEV-Zx-ntB" firstAttribute="leading" secondItem="WRF-VB-JKE" secondAttribute="leading" id="kR6-lZ-1cp"/>
-                            <constraint firstItem="WRF-VB-JKE" firstAttribute="trailing" secondItem="uEV-Zx-ntB" secondAttribute="trailing" id="pYb-eN-BZd"/>
-                            <constraint firstItem="WRF-VB-JKE" firstAttribute="trailing" secondItem="HW0-YD-Czv" secondAttribute="trailingMargin" id="qEJ-mH-GXd"/>
-                            <constraint firstItem="Dvl-uo-M1J" firstAttribute="top" secondItem="uEV-Zx-ntB" secondAttribute="bottom" constant="99" id="qGa-1a-khF"/>
-                            <constraint firstItem="6zy-xz-Z1B" firstAttribute="leading" secondItem="HW0-YD-Czv" secondAttribute="leadingMargin" id="xOS-dT-dCd"/>
+                            <constraint firstItem="6zy-xz-Z1B" firstAttribute="top" secondItem="FMR-TN-iwO" secondAttribute="bottom" constant="79" id="3M0-AG-cvZ"/>
+                            <constraint firstItem="uEV-Zx-ntB" firstAttribute="leading" secondItem="WRF-VB-JKE" secondAttribute="leading" id="6VA-xi-b34"/>
+                            <constraint firstItem="WRF-VB-JKE" firstAttribute="trailing" secondItem="HW0-YD-Czv" secondAttribute="trailingMargin" id="7sv-Kp-EXb"/>
+                            <constraint firstItem="PFQ-cJ-nV5" firstAttribute="baseline" secondItem="uEV-Zx-ntB" secondAttribute="baseline" id="99w-f5-adq"/>
+                            <constraint firstItem="uEV-Zx-ntB" firstAttribute="firstBaseline" secondItem="PFQ-cJ-nV5" secondAttribute="firstBaseline" id="IhZ-MB-Z87"/>
+                            <constraint firstItem="PFQ-cJ-nV5" firstAttribute="leading" secondItem="HW0-YD-Czv" secondAttribute="leadingMargin" id="MG4-KH-vJR"/>
+                            <constraint firstItem="imO-fA-WeA" firstAttribute="top" secondItem="PFQ-cJ-nV5" secondAttribute="bottom" constant="385" id="SPM-ne-BgF"/>
+                            <constraint firstItem="PFQ-cJ-nV5" firstAttribute="top" secondItem="6zy-xz-Z1B" secondAttribute="bottom" constant="25" id="TTw-ho-pds"/>
+                            <constraint firstItem="z21-vy-5Az" firstAttribute="top" secondItem="Dvl-uo-M1J" secondAttribute="bottom" constant="64" id="WjK-0g-WBL"/>
+                            <constraint firstItem="z21-vy-5Az" firstAttribute="centerX" secondItem="Dvl-uo-M1J" secondAttribute="centerX" id="YkC-d6-SCX"/>
+                            <constraint firstItem="PFQ-cJ-nV5" firstAttribute="leading" secondItem="6zy-xz-Z1B" secondAttribute="leading" id="Yom-gY-Au5"/>
+                            <constraint firstItem="6zy-xz-Z1B" firstAttribute="baseline" secondItem="WRF-VB-JKE" secondAttribute="baseline" id="ZLi-71-exp"/>
+                            <constraint firstItem="WRF-VB-JKE" firstAttribute="trailing" secondItem="uEV-Zx-ntB" secondAttribute="trailing" id="ZXi-UB-JN8"/>
+                            <constraint firstItem="WRF-VB-JKE" firstAttribute="leading" secondItem="6zy-xz-Z1B" secondAttribute="trailing" constant="8" symbolic="YES" id="hgq-tT-KS1"/>
+                            <constraint firstItem="Dvl-uo-M1J" firstAttribute="top" secondItem="uEV-Zx-ntB" secondAttribute="bottom" constant="79" id="q5p-Pb-xza"/>
+                            <constraint firstItem="z21-vy-5Az" firstAttribute="centerX" secondItem="HW0-YD-Czv" secondAttribute="centerX" id="tUP-u3-oGp"/>
+                            <constraint firstItem="WRF-VB-JKE" firstAttribute="firstBaseline" secondItem="6zy-xz-Z1B" secondAttribute="firstBaseline" id="y6H-W3-rNc"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="得到当前位置" image="pin" selectedImage="pin_selected" id="Lhs-j2-zQ4"/>
+                    <connections>
+                        <outlet property="latitudeLabel" destination="uEV-Zx-ntB" id="GcR-qe-sD4"/>
+                        <outlet property="longitudeLabel" destination="WRF-VB-JKE" id="a7z-LV-5gY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0c-Cl-1KA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

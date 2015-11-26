@@ -14,8 +14,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     var pointLocation:CLLocation? = nil
-    var locationManager:CLLocationManager? = nil
-    var geocoder:CLGeocoder? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,37 +25,36 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = location.coordinate
-            annotation.title = "Current"
+            annotation.title = "CoreLocaiont获得的定位"
             annotation.subtitle = "You"
             mapView.addAnnotation(annotation)
         }
         
         self.mapView.userTrackingMode = .Follow
         self.mapView.mapType = .Standard
-        if (locationManager == nil) {
-            locationManager = CLLocationManager()
-        }
         
-        let request = MKLocalSearchRequest()
-        request.naturalLanguageQuery = "Restaurants"
-        request.region = mapView.region
+//        let request = MKLocalSearchRequest()
+//        request.naturalLanguageQuery = "Restaurants"
+//        request.region = mapView.region
+//        
+//        let search = MKLocalSearch(request: request)
+//        search.startWithCompletionHandler { (response, error) in
+//            guard let response = response else {
+//                print("Search error: \(error)")
+//                return
+//            }
+//            
+//            for item in response.mapItems {
+//                // ...
+//                print("ITEM:\(item.name)")
+//            }
+//        }
         
-        let search = MKLocalSearch(request: request)
-        search.startWithCompletionHandler { (response, error) in
-            guard let response = response else {
-                print("Search error: \(error)")
-                return
-            }
-            
-            for item in response.mapItems {
-                // ...
-                print("ITEM:\(item.name)")
-            }
-        }
-        
-        geocoder = CLGeocoder()
     }
     
+    @IBAction func backAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
@@ -70,9 +67,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             
             let pm = placemarks?.first
-            
-            userLocation.title = pm?.locality
-            userLocation.subtitle = pm?.name
+            let span = MKCoordinateSpanMake(0.05, 0.05)
+            let region = MKCoordinateRegion(center: (pm!.location?.coordinate)!, span: span)
+            self.mapView.setRegion(region, animated: true)
+            userLocation.title = "MapKit获得的定位"
+            userLocation.subtitle = "You"
         }
     }
 
