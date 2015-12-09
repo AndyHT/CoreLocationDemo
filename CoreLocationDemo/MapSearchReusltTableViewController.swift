@@ -7,8 +7,12 @@
 //  显示查找结果
 
 import UIKit
+import MapKit
 
 class MapSearchReusltTableViewController: UITableViewController {
+    
+    
+    var resultArray:[MKMapItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,25 +31,24 @@ class MapSearchReusltTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return resultArray.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("resultCell", forIndexPath: indexPath)
 
-        // Configure the cell...
-
+        let titleLabel = cell.viewWithTag(1) as! UILabel
+        let subtitleLabel = cell.viewWithTag(2) as! UILabel
+        
+        titleLabel.text = resultArray[indexPath.row].name
+        subtitleLabel.text = resultArray[indexPath.row].placemark.locality
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -82,14 +85,18 @@ class MapSearchReusltTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let selecedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
+        if segue.identifier == "showItem" {
+            if let detinationVC = segue.destinationViewController as? MapViewController {
+                detinationVC.pointItem = resultArray[selecedIndex!.row]
+            }
+        }
     }
-    */
+    
 
 }
