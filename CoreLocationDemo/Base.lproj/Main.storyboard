@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--地图-->
+        <!--Map View Controller-->
         <scene sceneID="cgR-n4-fid">
             <objects>
                 <viewController id="TZ3-q5-iuC" customClass="MapViewController" customModule="CoreLocationDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,16 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hw6-Hl-pV5">
-                                <rect key="frame" x="28" y="28" width="30" height="30"/>
-                                <animations/>
-                                <state key="normal" title="返回"/>
-                                <connections>
-                                    <action selector="backAction:" destination="TZ3-q5-iuC" eventType="touchUpInside" id="Zu8-qV-g4Z"/>
-                                </connections>
-                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="u5m-1o-mWu">
-                                <rect key="frame" x="0.0" y="75" width="600" height="476"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <animations/>
                             </mapView>
                         </subviews>
@@ -38,17 +30,73 @@
                             <constraint firstItem="u5m-1o-mWu" firstAttribute="leading" secondItem="cQU-zX-64P" secondAttribute="leading" id="0GJ-ZJ-BGG"/>
                             <constraint firstAttribute="trailing" secondItem="u5m-1o-mWu" secondAttribute="trailing" id="WtO-cK-5iR"/>
                             <constraint firstItem="u5m-1o-mWu" firstAttribute="bottom" secondItem="QDC-iU-4ep" secondAttribute="top" id="nBf-FF-NdJ"/>
-                            <constraint firstItem="u5m-1o-mWu" firstAttribute="top" secondItem="cQU-zX-64P" secondAttribute="top" constant="75" id="rv5-zN-ijw"/>
+                            <constraint firstItem="u5m-1o-mWu" firstAttribute="top" secondItem="cQU-zX-64P" secondAttribute="top" constant="64" id="rv5-zN-ijw"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="地图" image="map" selectedImage="map_selected" id="uCl-wO-uY3"/>
+                    <navigationItem key="navigationItem" id="Unk-ov-utX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="q20-Dx-q8h">
+                            <connections>
+                                <action selector="searchPlace:" destination="TZ3-q5-iuC" id="eyL-1h-hfE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="u5m-1o-mWu" id="mMa-op-5eQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRB-kO-L74" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="295" y="689"/>
+            <point key="canvasLocation" x="1107" y="689"/>
+        </scene>
+        <!--Map Search Reuslt Table View Controller-->
+        <scene sceneID="WN5-so-xi4">
+            <objects>
+                <tableViewController id="5RN-YG-8BR" customClass="MapSearchReusltTableViewController" customModule="CoreLocationDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="sn2-np-RPo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="WTk-V6-2UW" detailTextLabel="XPH-Ox-eQL" style="IBUITableViewCellStyleSubtitle" id="L4Y-9j-mn1">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L4Y-9j-mn1" id="v8T-Zz-mIb">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WTk-V6-2UW">
+                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XPH-Ox-eQL">
+                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5RN-YG-8BR" id="EQk-yt-64a"/>
+                            <outlet property="delegate" destination="5RN-YG-8BR" id="I5M-1d-1Qc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="lEX-vr-oRd"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rq1-84-Iyv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2021" y="689"/>
         </scene>
         <!--得到当前位置-->
         <scene sceneID="nsr-Nx-Xgc">
@@ -94,14 +142,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z21-vy-5Az">
-                                <rect key="frame" x="225" y="339" width="150" height="30"/>
-                                <animations/>
-                                <state key="normal" title="在地图上显示我的位置"/>
-                                <connections>
-                                    <segue destination="TZ3-q5-iuC" kind="show" identifier="mapView" id="DEb-FW-OUI"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvl-uo-M1J">
                                 <rect key="frame" x="270" y="245" width="60" height="30"/>
                                 <animations/>
@@ -122,14 +162,12 @@
                             <constraint firstItem="PFQ-cJ-nV5" firstAttribute="leading" secondItem="HW0-YD-Czv" secondAttribute="leadingMargin" id="MG4-KH-vJR"/>
                             <constraint firstItem="imO-fA-WeA" firstAttribute="top" secondItem="PFQ-cJ-nV5" secondAttribute="bottom" constant="385" id="SPM-ne-BgF"/>
                             <constraint firstItem="PFQ-cJ-nV5" firstAttribute="top" secondItem="6zy-xz-Z1B" secondAttribute="bottom" constant="25" id="TTw-ho-pds"/>
-                            <constraint firstItem="z21-vy-5Az" firstAttribute="top" secondItem="Dvl-uo-M1J" secondAttribute="bottom" constant="64" id="WjK-0g-WBL"/>
-                            <constraint firstItem="z21-vy-5Az" firstAttribute="centerX" secondItem="Dvl-uo-M1J" secondAttribute="centerX" id="YkC-d6-SCX"/>
                             <constraint firstItem="PFQ-cJ-nV5" firstAttribute="leading" secondItem="6zy-xz-Z1B" secondAttribute="leading" id="Yom-gY-Au5"/>
                             <constraint firstItem="6zy-xz-Z1B" firstAttribute="baseline" secondItem="WRF-VB-JKE" secondAttribute="baseline" id="ZLi-71-exp"/>
                             <constraint firstItem="WRF-VB-JKE" firstAttribute="trailing" secondItem="uEV-Zx-ntB" secondAttribute="trailing" id="ZXi-UB-JN8"/>
+                            <constraint firstItem="Dvl-uo-M1J" firstAttribute="centerX" secondItem="HW0-YD-Czv" secondAttribute="centerX" id="ee3-MW-SCM"/>
                             <constraint firstItem="WRF-VB-JKE" firstAttribute="leading" secondItem="6zy-xz-Z1B" secondAttribute="trailing" constant="8" symbolic="YES" id="hgq-tT-KS1"/>
                             <constraint firstItem="Dvl-uo-M1J" firstAttribute="top" secondItem="uEV-Zx-ntB" secondAttribute="bottom" constant="79" id="q5p-Pb-xza"/>
-                            <constraint firstItem="z21-vy-5Az" firstAttribute="centerX" secondItem="HW0-YD-Czv" secondAttribute="centerX" id="tUP-u3-oGp"/>
                             <constraint firstItem="WRF-VB-JKE" firstAttribute="firstBaseline" secondItem="6zy-xz-Z1B" secondAttribute="firstBaseline" id="y6H-W3-rNc"/>
                         </constraints>
                     </view>
@@ -155,12 +193,32 @@
                     </tabBar>
                     <connections>
                         <segue destination="HUY-bM-VBf" kind="relationship" relationship="viewControllers" id="kbV-56-CUb"/>
-                        <segue destination="TZ3-q5-iuC" kind="relationship" relationship="viewControllers" id="icR-sv-08E"/>
+                        <segue destination="aBg-AQ-fbu" kind="relationship" relationship="viewControllers" id="icR-sv-08E"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCW-Zw-5Mi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-563" y="239"/>
+        </scene>
+        <!--地图-->
+        <scene sceneID="Zdx-td-nzS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aBg-AQ-fbu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="地图" image="map" selectedImage="map_selected" id="uCl-wO-uY3"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1aZ-CR-7BA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TZ3-q5-iuC" kind="relationship" relationship="rootViewController" id="T32-0z-UHN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7YD-dl-FCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="295" y="689"/>
         </scene>
     </scenes>
     <resources>
@@ -169,7 +227,4 @@
         <image name="pin" width="14" height="28"/>
         <image name="pin_selected" width="14" height="28"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="DEb-FW-OUI"/>
-    </inferredMetricsTieBreakers>
 </document>

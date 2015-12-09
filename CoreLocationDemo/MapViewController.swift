@@ -52,8 +52,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
-    @IBAction func backAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+//    @IBAction func backAction(sender: AnyObject) {
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//    }
+    
+    
+    @IBAction func searchPlace(sender: AnyObject) {
+        //地图查找，用一个AlertView来获得要查找的信息，然后在tableView中显示查找到的内容，点击cell可以在地图上显示该点（放置一个大头针）
+        
     }
     
     
@@ -81,4 +87,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
 
+    
+    
+    
+    //实现路径规划
+    
+    //图层该怎么弄
 }
