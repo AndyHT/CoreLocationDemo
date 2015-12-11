@@ -27,7 +27,10 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func startLocate(sender: AnyObject) {
-        checkLocationAuthority()
+        let authorityStatus = CLLocationManager.authorizationStatus()
+        if getAuthorizationFromUser(authorityStatus) {
+            startStandardUpdates()
+        }
     }
     func startStandardUpdates() {
         if (locationManager == nil) {
@@ -43,30 +46,25 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    func checkLocationAuthority() {
+    func getAuthorizationFromUser(status: CLAuthorizationStatus) -> Bool {
         
-        let locationAuthorization = CLLocationManager.authorizationStatus()
-        
-        switch locationAuthorization {
+        var userIsAgreeUseLocaiton = false
+        switch status {
         case .AuthorizedAlways, .AuthorizedWhenInUse:
-            print("permission")
             //允许使用定位
-            
-            startStandardUpdates()
-            
+            userIsAgreeUseLocaiton = true
         case .Denied, .Restricted:
-            print("restricted")
             //没有获得授权，不允许使用定位
             //给用户提示，请求获得授权
             let alertController = UIAlertController(
-                title: "Background Location Access Disabled",
-                message: "In order to be notified about adorable kittens near you, please open this app's settings and set location access to 'Always'.",
+                title: "定位权限被禁用",
+                message: "请打开app的定位权限以获得当前位置信息",
                 preferredStyle: .Alert)
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
             alertController.addAction(cancelAction)
             
-            let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+            let openAction = UIAlertAction(title: "设置", style: .Default) { (action) in
                 if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
                     UIApplication.sharedApplication().openURL(url)
                 }
@@ -76,21 +74,19 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
             self.presentViewController(alertController, animated: true, completion: nil)
             
         case .NotDetermined:
-            print("notDetermined")
             //向用户申请授权
-            print("申请授权")
             locationManager = CLLocationManager()
             self.locationManager!.requestWhenInUseAuthorization()
             
-            startStandardUpdates()
+            userIsAgreeUseLocaiton = true
         }
-        
+        return userIsAgreeUseLocaiton
     }
     
     //locationManager定位失败时delegate会调用该函数通知App
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         if let locationError = CLError(rawValue: error.code) {
-            // ...
+
             switch locationError {
             case .LocationUnknown:
                 print("无法获得当前定位")
@@ -105,7 +101,8 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidDisappear(animated: Bool) {
-        //修改distanceFilter和定位精度以降低能耗
+        //停止定位定位更新以降低能耗
+        locationManager?.stopUpdatingLocation()
         
     }
 
@@ -130,5 +127,8 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         //当用户修改定位权限时给用户提示申请定位权限
+        if getAuthorizationFromUser(status) {
+            startStandardUpdates()
+        }
     }
 }

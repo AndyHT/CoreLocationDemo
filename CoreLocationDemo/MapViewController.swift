@@ -17,6 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, SetPointDelegate {
     
     var pointItem:MKMapItem?
     var coreLocatinPoint:CLLocation?
+    var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, SetPointDelegate {
         
         self.mapView.userTrackingMode = .Follow
         self.mapView.mapType = .Standard
-
+        
+        let locationAuthorization = CLLocationManager.authorizationStatus()
+        CoreLocationViewController().getAuthorizationFromUser(locationAuthorization)
     }
     
     func setPointInMap(point: MKMapItem) {
@@ -140,7 +143,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, SetPointDelegate {
             let region = MKCoordinateRegion(center: (pm!.location?.coordinate)!, span: span)
             self.mapView.setRegion(region, animated: true)
             userLocation.title = "MapKit获得的定位"
-            userLocation.subtitle = "You"
+            userLocation.subtitle = "你的当前位置"
         }
     }
     
@@ -148,12 +151,4 @@ class MapViewController: UIViewController, MKMapViewDelegate, SetPointDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    
-    
-    
-    //实现路径规划
-    
-    //图层该怎么弄
 }
