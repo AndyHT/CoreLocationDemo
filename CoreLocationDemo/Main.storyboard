@@ -142,7 +142,7 @@
                                 <rect key="frame" x="277" y="334" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="TZ3-q5-iuC" kind="push" identifier="mapView" id="JhO-sd-tcP"/>
+                                    <segue destination="TZ3-q5-iuC" kind="show" identifier="mapView" id="w1g-a4-W8y"/>
                                 </connections>
                             </button>
                         </subviews>
