@@ -119,15 +119,15 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "mapView" {
-//            
-//            if let location = self.pointLocation {
-//                let nextController = segue.destinationViewController as! MapViewController
-//                nextController.pointLocation = location
-//            }
-//        }
-//    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "mapView" {
+            
+            if let location = self.pointLocation {
+                let nextController = segue.destinationViewController as! MapViewController
+                nextController.coreLocatinPoint = location
+            }
+        }
+    }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         //当用户修改定位权限时给用户提示申请定位权限

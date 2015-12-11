@@ -9,14 +9,41 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, SetPointDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var pointItem:MKMapItem? = nil
+    var pointItem:MKMapItem?
+    var coreLocatinPoint:CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.zoomEnabled = true
+        mapView.showsCompass = true
+        mapView.showsScale = true
+        
+        if let location = coreLocatinPoint {
+            let span = MKCoordinateSpanMake(0.05, 0.05)
+            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            mapView.setRegion(region, animated: true)
+
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location.coordinate
+            annotation.title = "你的位置"
+            annotation.subtitle = "CoreLocation获得的定位"
+            mapView.addAnnotation(annotation)
+        }
+        
+        self.mapView.userTrackingMode = .Follow
+        self.mapView.mapType = .Standard
+
+    }
+    
+    func setPointInMap(point: MKMapItem) {
+        pointItem = point
+        self.navigationController?.title = point.name
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -35,9 +62,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             mapView.addAnnotation(annotation)
         }
         
-        self.mapView.userTrackingMode = .Follow
-        self.mapView.mapType = .Standard
-
+        
+        
     }
     
     @IBAction func searchPlace(sender: AnyObject) {
@@ -75,12 +101,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     //将查找结果显示在TableView中
                     let resultTableView = self.storyboard!.instantiateViewControllerWithIdentifier("SearchResultTableViewController") as! MapSearchReusltTableViewController
                     resultTableView.resultArray = response.mapItems
+                    resultTableView.setPointDelegate = self
                     
                     self.navigationController?.pushViewController(resultTableView, animated: true)
-                    
-//                    for item in response.mapItems {
-//                        print("ITEM:\(item.name)")
-//                    }
                 }
             }
             
@@ -108,7 +131,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             userLocation.subtitle = "You"
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

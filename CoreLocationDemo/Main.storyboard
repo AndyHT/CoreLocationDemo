@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Moo-Cl-Czl">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--地图-->
         <scene sceneID="cgR-n4-fid">
             <objects>
                 <viewController id="TZ3-q5-iuC" customClass="MapViewController" customModule="CoreLocationDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                             <constraint firstItem="u5m-1o-mWu" firstAttribute="top" secondItem="cQU-zX-64P" secondAttribute="top" constant="64" id="rv5-zN-ijw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Unk-ov-utX">
+                    <navigationItem key="navigationItem" title="地图" id="Unk-ov-utX">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="q20-Dx-q8h">
                             <connections>
                                 <action selector="searchPlace:" destination="TZ3-q5-iuC" id="eyL-1h-hfE"/>
@@ -62,18 +62,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fsq-s9-abm">
+                                        <label opaque="NO" multipleTouchEnabled="YES" tag="1" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fsq-s9-abm">
                                             <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="azY-FM-wIA">
+                                        <label opaque="NO" multipleTouchEnabled="YES" tag="2" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="azY-FM-wIA">
                                             <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -91,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="2705" y="689"/>
         </scene>
-        <!--Core Location View Controller-->
+        <!--CoreLocation-->
         <scene sceneID="nsr-Nx-Xgc">
             <objects>
                 <viewController id="HUY-bM-VBf" customClass="CoreLocationViewController" customModule="CoreLocationDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,19 +106,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRF-VB-JKE">
                                 <rect key="frame" x="96" y="99" width="484" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEV-Zx-ntB">
                                 <rect key="frame" x="96" y="145" width="484" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前纬度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFQ-cJ-nV5">
                                 <rect key="frame" x="20" y="145" width="68" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前经度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zy-xz-Z1B">
@@ -128,7 +128,7 @@
                                     <constraint firstAttribute="height" constant="21" id="NSl-36-r1n"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvl-uo-M1J">
@@ -142,7 +142,7 @@
                                 <rect key="frame" x="277" y="334" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="TZ3-q5-iuC" kind="push" id="JhO-sd-tcP"/>
+                                    <segue destination="TZ3-q5-iuC" kind="push" identifier="mapView" id="JhO-sd-tcP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -167,7 +167,7 @@
                             <constraint firstItem="6zy-xz-Z1B" firstAttribute="leading" secondItem="PFQ-cJ-nV5" secondAttribute="leading" id="xaM-Xg-q8F"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="iFu-Fi-SMt"/>
+                    <navigationItem key="navigationItem" title="CoreLocation" id="iFu-Fi-SMt"/>
                     <connections>
                         <outlet property="latitudeLabel" destination="uEV-Zx-ntB" id="GcR-qe-sD4"/>
                         <outlet property="longitudeLabel" destination="WRF-VB-JKE" id="a7z-LV-5gY"/>

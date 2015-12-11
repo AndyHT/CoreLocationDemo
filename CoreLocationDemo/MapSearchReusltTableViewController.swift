@@ -9,10 +9,16 @@
 import UIKit
 import MapKit
 
+protocol SetPointDelegate {
+    func setPointInMap(point: MKMapItem)
+}
+
 class MapSearchReusltTableViewController: UITableViewController {
     
     
     var resultArray:[MKMapItem] = []
+    
+    var setPointDelegate: SetPointDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +52,19 @@ class MapSearchReusltTableViewController: UITableViewController {
         titleLabel.text = resultArray[indexPath.row].name
         subtitleLabel.text = resultArray[indexPath.row].placemark.locality
         
+        cell.accessoryType = .DisclosureIndicator
+        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let delegate = setPointDelegate {
+            print("GET DELEGATE")
+            delegate.setPointInMap(resultArray[indexPath.row])
+        }
+        
+        
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
 
