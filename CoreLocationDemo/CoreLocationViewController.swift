@@ -17,7 +17,6 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }

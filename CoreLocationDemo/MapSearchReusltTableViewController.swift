@@ -107,14 +107,8 @@ class MapSearchReusltTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let selecedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
-        if segue.identifier == "showItem" {
-            if let detinationVC = segue.destinationViewController as? MapViewController {
-                detinationVC.pointItem = resultArray[selecedIndex!.row]
-            }
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//    }
     
 
 }

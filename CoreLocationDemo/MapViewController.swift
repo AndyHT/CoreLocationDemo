@@ -13,6 +13,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, SetPointDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var mapType: UISegmentedControl!
+    
     var pointItem:MKMapItem?
     var coreLocatinPoint:CLLocation?
     
@@ -48,7 +50,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, SetPointDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("Item:\(pointItem)")
+        mapType.selectedSegmentIndex = 0
         
         if let item = self.pointItem {
             let span = MKCoordinateSpanMake(0.05, 0.05)
@@ -113,6 +115,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, SetPointDelegate {
         self.presentViewController(alertVC, animated: true, completion: nil)
     }
     
+    @IBAction func changeMapType(sender: UISegmentedControl) {
+        switch mapType.selectedSegmentIndex {
+        case 0:
+            mapView.mapType = .Standard
+        case 1:
+            mapView.mapType = .Satellite
+        default:
+            mapView.mapType = .Hybrid
+        }
+    }
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         let geoCoder = CLGeocoder()
