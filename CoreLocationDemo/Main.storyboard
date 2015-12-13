@@ -61,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRB-kO-L74" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="689"/>
+            <point key="canvasLocation" x="1018" y="1471"/>
         </scene>
         <!--Map Search Reuslt Table View Controller-->
         <scene sceneID="WN5-so-xi4">
@@ -106,7 +106,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rq1-84-Iyv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2705" y="689"/>
+            <point key="canvasLocation" x="1809" y="1471"/>
         </scene>
         <!--CoreLocation-->
         <scene sceneID="nsr-Nx-Xgc">
@@ -192,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0c-Cl-1KA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056" y="689"/>
+            <point key="canvasLocation" x="1018" y="689"/>
         </scene>
         <!--得到当前位置-->
         <scene sceneID="GIB-sw-8vf">
